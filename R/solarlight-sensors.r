@@ -1,9 +1,9 @@
 #' @title Solar Light sensors
 #'
-#' @description A vector of indeces for stracting subsets of spectra from the
+#' @description A vector of indexes for extracting subsets of spectra from the
 #' \code{\link{sensors.mspct}} object.
 #'
-#' @format A character vector of members of the collection of spctra.
+#' @format A character vector of members of the collection of spectra.
 #'
 #' @docType data
 #' @keywords datasets
@@ -17,7 +17,7 @@
 #' @source
 #' Data kindly made available by Lasse Ylianttila. These are the responses from
 #' a unit with higher and lower response to UVA radiation than typical units,
-#' as well as the response for a typical unit as observed in an intrument
+#' as well as the response for a typical unit as observed in an instrument
 #' intercomparison.
 #'
 #' @references Leszczynski K, Jokela K, Ylianttila L, Visuri R, Blumthaler M.
@@ -29,7 +29,7 @@
 #' Erythemally weighted radiometers in solar UV monitoring: results from the
 #' WMO/STUK Intercomparison. Photochem. Photobiol. 67(2):212-221.
 #'
-#' \url{http://solarlight.com/product/uvb-biometer-model-501-radiometer/}
+#' \url{https://solarlight.com/product/uvb-biometer-model-501-radiometer/}
 #'
 #' @examples
 #'

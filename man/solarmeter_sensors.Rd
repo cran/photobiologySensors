@@ -4,12 +4,14 @@
 \name{solarmeter_sensors}
 \alias{solarmeter_sensors}
 \title{Solarmeter devices}
-\format{A character vector of members of the collection of spctra.}
+\format{
+A character vector of members of the collection of spectra.
+}
 \usage{
 solarmeter_sensors
 }
 \description{
-A vector of indeces for stracting subsets of spectra from the
+A vector of indexes for extracting subsets of spectra from the
 \code{\link{sensors.mspct}} object.
 }
 \details{
@@ -31,7 +33,7 @@ solarmeter_sensors
 
 }
 \references{
-digitized from SM60graph.gif from
-\url{https://www.solarmeter.com/images/SM60graph.gif} on 20 December 2013.
+digitized from SM60graph.gif obtained from
+\url{https://www.solarmeter.com/} on 20 December 2013.
 }
 \keyword{datasets}

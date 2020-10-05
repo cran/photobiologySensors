@@ -7,10 +7,10 @@
 \title{photobiologySensors: Spectral Response Data for Light Sensors}
 \description{
 Spectral response data for broadband ultraviolet and visible
-radiation sensors. Different data sources were used: author-supplied data
-from scientific research papers, sensor-manufacturer supplied data, and
-published sensor specifications. Part of the 'r4photobiology' suite
-Aphalo P. J. (2015) <doi:10.19232/uv4pb.2015.1.14>.
+    radiation sensors. Different data sources were used: author-supplied data
+    from scientific research papers, sensor-manufacturer supplied data, and
+    published sensor specifications. Part of the 'r4photobiology' suite
+    Aphalo P. J. (2015) <doi:10.19232/uv4pb.2015.1.14>.
 }
 \details{
 Data for response spectra for different types of broadband sensors.
@@ -19,12 +19,15 @@ sensors.
 
 In addition to the spectra the package provides character vectors of names
 to be used as indexes to subset groups of spectra. In many cases spectral
-data are normalized to spectral energy responsieness equal to one at the
+data are normalized to spectral energy responsiveness equal to one at the
 wavelength of maximum spectral energy response (peak sensitivity).
+
+A list of data frames contains angular response data for some of the same
+broadband sensors and some cosine diffusers used with spectrometers.
 
 The data in this package are not original. Some have been provided by
 authors of scientific publications and manufacturers. However, most of
-the spectra have been digitised from manufacturer's brochures and manuals
+the spectra have been digitized from manufacturer's brochures and manuals
 available on web sites.
 }
 \section{Warning!}{
@@ -54,21 +57,25 @@ intersect(par_sensors, licor_sensors)
 
 photon_as_default()
 
-response(sensors.mspct$LI_190, w.band = PAR(), quantity = "contribution.pc")
+response(sensors.mspct$LICOR_LI_190, w.band = PAR(), quantity = "contribution.pc")
 
-plot(sensors.mspct$LI_190, w.band = PAR(), label.qty = "contribution.pc")
+plot(sensors.mspct$LICOR_LI_190, w.band = PAR(), label.qty = "contribution.pc")
 
+}
+\references{
+Aphalo, Pedro J. (2015) The r4photobiology suite. UV4Plants Bulletin, 2015:1,
+21-29. \url{https://doi.org/10.19232/uv4pb.2015.1.14}.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://www.r4photobiology.info}
+  \item \url{https://www.r4photobiology.info}
   \item \url{https://bitbucket.org/aphalo/photobiologysensors}
   \item Report bugs at \url{https://bitbucket.org/aphalo/photobiologysensors/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Pedro J. Aphalo \email{pedro.aphalo@helsinki.fi} (https://orcid.org/0000-0003-3385-972X)
+\strong{Maintainer}: Pedro J. Aphalo \email{pedro.aphalo@helsinki.fi} (\href{https://orcid.org/0000-0003-3385-972X}{ORCID})
 
 }

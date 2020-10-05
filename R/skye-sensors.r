@@ -1,9 +1,9 @@
 #' @title Skye-Instruments Sensors
 #'
-#' @description A vector of indeces for stracting subsets of spectra from the
+#' @description A vector of indexes for extracting subsets of spectra from the
 #' \code{\link{sensors.mspct}} object.
 #'
-#' @format A character vector of members of the collection of spctra.
+#' @format A character vector of members of the collection of spectra.
 #'
 #' @docType data
 #' @keywords datasets
@@ -17,7 +17,7 @@
 #' Skye UVI Sensor Sensor SKU440 V. 3.
 #'
 #' Manufacturer: Skye Instruments, Llandrindod Wells, Powys, UK
-#' \url{http://www.skyeinstruments.com/}
+#' \url{https://www.skyeinstruments.com/}
 #'
 #' @note
 #' Spectral data digitized from figures in manufacturer's manuals.

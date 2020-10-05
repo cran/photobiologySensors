@@ -3,13 +3,15 @@
 \docType{data}
 \name{ideal_sensors}
 \alias{ideal_sensors}
-\title{Idealised sensors}
-\format{A character vector of members of the collection of spctra.}
+\title{Idealized sensors}
+\format{
+A character vector of members of the collection of spectra.
+}
 \usage{
 ideal_sensors
 }
 \description{
-A vector of indeces for stracting subsets of spectra from the
+A vector of indexes for extracting subsets of spectra from the
 \code{\link{sensors.mspct}} object.
 }
 \note{

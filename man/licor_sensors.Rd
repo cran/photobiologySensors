@@ -4,7 +4,9 @@
 \name{licor_sensors}
 \alias{licor_sensors}
 \title{LI-COR sensors}
-\format{A character vector of members of the collection of spctra.}
+\format{
+A character vector of members of the collection of spctra.
+}
 \usage{
 licor_sensors
 }
@@ -25,13 +27,13 @@ The LI-210SA Photometric Sensor utilizes a filtered silicon photodiode to provid
 a spectral response that matches the CIE curve within ± 5% with most light sources.
 }
 \note{
-Digitized with 'enguage' from manufacturers brochures. These are approximate
+Digitized with 'engauge' from manufacturers brochures. These are approximate
 data, both because of the digitizing process, and because they are
 either typical values or for a particular sensor unit. Individual sensor units
 are expected to differ to some degree in spectral response.
 
 Manufacturer: LI-COR Inc., Lincoln, Nebraska
-\url{http://www.licor.com/}
+\url{https://www.licor.com/}
 }
 \examples{
 licor_sensors

@@ -4,12 +4,14 @@
 \name{sglux_sensors}
 \alias{sglux_sensors}
 \title{sglux broadband sensors}
-\format{A character vector of members of the collection of spctra.}
+\format{
+A character vector of members of the collection of spectra.
+}
 \usage{
 sglux_sensors
 }
 \description{
-A vector of indeces for stracting subsets of spectra from the
+A vector of indexes for extracting subsets of spectra from the
 \code{\link{sensors.mspct}} object.
 }
 \details{
@@ -25,10 +27,12 @@ sglux TOCON blue 4 blue light broadband sensor (pre-amplified GaP detector).
 
 TOCON preamplified sensors with similar spectral response as the diodes are
 also available from sglux. The blue light sensor is only available as
-preamplified TOCON.
+preamplified TOCON. Sensors are available in different configurations with
+different sensitivity and with different angular responses, and encased
+to resist different environmental conditions.
 
 Manufacturer: sglux GmbH, Richard-Willstätter-Str. 8, 12489 Berlin, Germany.
-\url{http://www.sglux.com/}
+\url{https://sglux.de/en/}
 }
 \note{
 Original data supplied by the manufacturer as a computer readable file.

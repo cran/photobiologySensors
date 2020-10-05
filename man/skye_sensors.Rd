@@ -4,12 +4,14 @@
 \name{skye_sensors}
 \alias{skye_sensors}
 \title{Skye-Instruments Sensors}
-\format{A character vector of members of the collection of spctra.}
+\format{
+A character vector of members of the collection of spectra.
+}
 \usage{
 skye_sensors
 }
 \description{
-A vector of indeces for stracting subsets of spectra from the
+A vector of indexes for extracting subsets of spectra from the
 \code{\link{sensors.mspct}} object.
 }
 \details{
@@ -21,7 +23,7 @@ Skye UV-A Sensor Sensor SKU421 V. 3, Skye UV-B Sensor Sensor SKU430 V. 3,
 Skye UVI Sensor Sensor SKU440 V. 3.
 
 Manufacturer: Skye Instruments, Llandrindod Wells, Powys, UK
-\url{http://www.skyeinstruments.com/}
+\url{https://www.skyeinstruments.com/}
 }
 \note{
 Spectral data digitized from figures in manufacturer's manuals.

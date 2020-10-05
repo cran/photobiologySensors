@@ -4,7 +4,9 @@
 \name{deltat_sensors}
 \alias{deltat_sensors}
 \title{Delta-T sensors}
-\format{A character vector of members of the collection of spctra.}
+\format{
+A character vector of members of the collection of spctra.
+}
 \usage{
 deltat_sensors
 }
@@ -21,7 +23,7 @@ process from figures with a linear scale is prone to errors, which
 are specially noticeable in regions of low responsivity.
 
 Manufacturer: Delta-T Devices Ltd, CAMBRIDGE CB25 0EJ, UK
-\url{http://www.delta-t.co.uk/}
+\url{https://www.delta-t.co.uk/}
 }
 \examples{
 deltat_sensors

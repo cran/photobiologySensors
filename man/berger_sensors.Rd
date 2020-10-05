@@ -4,7 +4,9 @@
 \name{berger_sensors}
 \alias{berger_sensors}
 \title{'Berger' UV-Biometer}
-\format{A character vector of members of the collection of spctra.}
+\format{
+A character vector of members of the collection of spctra.
+}
 \usage{
 berger_sensors
 }

@@ -20,7 +20,35 @@
 \alias{blue_sensors}
 \alias{multichannel_sensors}
 \title{Sensors responsive to different wavebands}
-\format{A vector of character strings.}
+\format{
+A vector of character strings.
+
+An object of class \code{character} of length 1.
+
+An object of class \code{character} of length 4.
+
+An object of class \code{character} of length 8.
+
+An object of class \code{character} of length 4.
+
+An object of class \code{character} of length 6.
+
+An object of class \code{character} of length 2.
+
+An object of class \code{character} of length 2.
+
+An object of class \code{character} of length 2.
+
+An object of class \code{character} of length 2.
+
+An object of class \code{character} of length 1.
+
+An object of class \code{character} of length 1.
+
+An object of class \code{character} of length 1.
+
+An object of class \code{character} of length 2.
+}
 \usage{
 uv_sensors
 
@@ -51,7 +79,7 @@ blue_sensors
 multichannel_sensors
 }
 \description{
-Names of datasets containing the wavelengths and tabulated values spectral emittance
+Names of datasets containing the wavelengths and tabulated values spectral responsivity
 for broadband sensors from various suppliers.
 }
 \examples{

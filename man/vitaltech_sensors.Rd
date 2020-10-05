@@ -4,7 +4,9 @@
 \name{vitaltech_sensors}
 \alias{vitaltech_sensors}
 \title{Vital Technologies sensors}
-\format{A character vector of members of the collection of spctra.}
+\format{
+A character vector of members of the collection of spectra.
+}
 \source{
 Data kindly made available by Lasse Ylianttila.
 }
@@ -12,7 +14,7 @@ Data kindly made available by Lasse Ylianttila.
 vitaltech_sensors
 }
 \description{
-A vector of indeces for stracting subsets of spectra from the
+A vector of indexes for extracting subsets of spectra from the
 \code{\link{sensors.mspct}} object.
 }
 \details{

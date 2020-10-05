@@ -4,7 +4,8 @@
 \name{sensors.mspct}
 \alias{sensors.mspct}
 \title{Spectral response of sensors}
-\format{A \code{response_mspct} object containing a
+\format{
+A \code{response_mspct} object containing a
 \code{response_spct} objects as \emph{named} members.
 
 Each member spectrum contains two variables, with responsivity in most cases
@@ -12,7 +13,8 @@ in relative energy units:
 \itemize{
    \item w.length (nm)
    \item s.e.response (r.u.)
-}}
+}
+}
 \usage{
 sensors.mspct
 }
