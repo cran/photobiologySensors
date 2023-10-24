@@ -1,9 +1,9 @@
 #' @title Delta-T sensors
 #'
-#' @description A vector of indeces for stracting subsets of spectra from the
-#' \code{\link{sensors.mspct}} object.
+#' @description A vector of names useful for extracting subsets of spectra from
+#'   the \code{\link{sensors.mspct}} object.
 #'
-#' @format A character vector of members of the collection of spctra.
+#' @format A character vector of names of members of the collection of spectra.
 #'
 #' @docType data
 #' @keywords datasets
@@ -17,7 +17,7 @@
 #' are specially noticeable in regions of low responsivity.
 #'
 #' Manufacturer: Delta-T Devices Ltd, CAMBRIDGE CB25 0EJ, UK
-#' \url{https://www.delta-t.co.uk/}
+#' \url{https://delta-t.co.uk/}
 #'
 #' @references
 #' Manufacturer's User Manual Version: 1.0 dated Nov 2010

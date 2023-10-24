@@ -1,17 +1,22 @@
 
-# phootbiologySensors
+# photobiologySensors <img src="man/figures/logo.png" align="right" width="120" />
+
+<!-- badges: start -->
 
 [![CRAN
 version](https://www.r-pkg.org/badges/version-last-release/photobiologySensors)](https://cran.r-project.org/package=photobiologySensors)
 [![cran
-checks](https://cranchecks.info/badges/worst/photobiologySensors)](https://cran.r-project.org/web/checks/check_results_photobiologySensors.html)
+checks](https://badges.cranchecks.info/worst/photobiologySensors.svg)](https://cran.r-project.org/web/checks/check_results_photobiologySensors.html)
+[![R build
+status](https://github.com/aphalo/photobiologySensors/workflows/R-CMD-check/badge.svg)](https://github.com/aphalo/photobiologySensors/actions)
+<!-- badges: end -->
 
 Package **photobiologySensors** is a collection of spectral
 responsiveness data for different broadband sensors and of angular
-response data for some of the same sensors and for cosine diffusers used
-with spectrometers. It complements other packages in the suite of R
-packages for photobiology ‘r4photobiology’. This package contains only
-data.
+response data for some of the same sensors and for cosine diffusers and
+other entrance optics used with spectrometers. It complements other
+packages in the suite of R packages for photobiology ‘r4photobiology’.
+This package contains only data.
 
 ## Code breaking renaming of data objects
 
@@ -26,6 +31,8 @@ name clashes with other packages and also to improve naming consistency.
 
 ``` r
 library(photobiologySensors)
+eval_ggspectra <- requireNamespace("ggspectra", quietly = TRUE)
+if (eval_ggspectra) library(ggspectra)
 ```
 
 How many spectra are included in the current version of
@@ -33,19 +40,19 @@ How many spectra are included in the current version of
 
 ``` r
 length(sensors.mspct)
-#> [1] 34
+#> [1] 51
 ```
 
 What are the names of available spectra? We use `head()` to limit the
 output.
 
 ``` r
-# list names of the first 10 filters
+# list names of the first 10 sensors
 head(names(sensors.mspct), 10)
-#>  [1] "Berger_UV_Biometer" "DeltaT_BF5"         "flat_e"            
-#>  [4] "flat_q"             "KIPP_CUV_5"         "KIPP_PQS1"         
-#>  [7] "KIPP_UVS_A"         "KIPP_UVS_B"         "KIPP_UVS_E"        
-#> [10] "LICOR_LI_190"
+#>  [1] "ams_TSL254R"         "ams_TSL257"          "Analytik_Jena_UVX25"
+#>  [4] "Analytik_Jena_UVX31" "Analytik_Jena_UVX36" "apogee_s2_131_FR"   
+#>  [7] "apogee_s2_131_R"     "apogee_sq_100X"      "apogee_sq_500"      
+#> [10] "apogee_sq_610"
 ```
 
 To subset based on different criteria we can use predefined character
@@ -53,91 +60,57 @@ vectors of filter names. For example, vector `licor_sensors` lists the
 names of the spectra for sensors from LI-COR.
 
 ``` r
-licor_sensors
-#> [1] "LICOR_LI_190" "LICOR_LI_200" "LICOR_LI_210"
+kipp_sensors
+#> [1] "KIPP_CUV_5" "KIPP_PQS1"  "KIPP_UVS_A" "KIPP_UVS_B" "KIPP_UVS_E"
 ```
 
-We can use the vector to extract all these spectra as a collection.
+We can use the vector to extract all these spectra as a collection, or
+as show below, extract data for PAR sensors from Kipp.
 
 ``` r
-sensors.mspct[licor_sensors]
-#> $LICOR_LI_190
-#> Object: response_spct [755 x 2]
-#> Wavelength range 365.614 to 742.99 nm, step 0.5004987 nm 
+sensors.mspct[intersect(kipp_sensors, par_sensors)]
+#> Object: response_mspct [1 x 1]
+#> --- Member: KIPP_PQS1 ---
+#> Object: response_spct [202 x 2]
+#> Wavelength range 391.431-717.608 nm, step 0.5010399-4.00832 nm 
+#> Label: KIPP PQS1 light sensor 
 #> Time unit 1s
 #> 
-#> # A tibble: 755 x 2
-#>    w.length s.q.response
-#>       <dbl>        <dbl>
-#>  1     366.      0.00181
-#>  2     366.      0.00188
-#>  3     367.      0.00195
-#>  4     367.      0.00202
-#>  5     368.      0.00209
-#>  6     368.      0.00217
-#>  7     369.      0.00224
-#>  8     369.      0.00231
-#>  9     370.      0.00238
-#> 10     370.      0.00245
-#> # ... with 745 more rows
-#> 
-#> $LICOR_LI_200
-#> Object: response_spct [64 x 2]
-#> Wavelength range 376.154 to 1106.97 nm, step 2.68 to 51.052 nm 
-#> Time unit 1s
-#> 
-#> # A tibble: 64 x 2
+#> # A tibble: 202 × 2
 #>    w.length s.e.response
 #>       <dbl>        <dbl>
-#>  1     376.       0.0272
-#>  2     382.       0.0543
-#>  3     392.       0.0788
-#>  4     395.       0.106 
-#>  5     400.       0.133 
-#>  6     406.       0.160 
-#>  7     414.       0.185 
-#>  8     425.       0.209 
-#>  9     435.       0.234 
-#> 10     451.       0.255 
-#> # ... with 54 more rows
+#>  1     391.       0.0245
+#>  2     392.       0.0327
+#>  3     392.       0.0410
+#>  4     393.       0.0561
+#>  5     394.       0.0650
+#>  6     394.       0.0753
+#>  7     395.       0.0960
+#>  8     396.       0.119 
+#>  9     397.       0.134 
+#> 10     397.       0.153 
+#> # ℹ 192 more rows
 #> 
-#> $LICOR_LI_210
-#> Object: response_spct [78 x 2]
-#> Wavelength range 382.387 to 715.931 nm, step 1.683 to 10.516 nm 
-#> Time unit 1s
-#> 
-#> # A tibble: 78 x 2
-#>    w.length s.e.response
-#>       <dbl>        <dbl>
-#>  1     382.      0.00335
-#>  2     387.      0.00670
-#>  3     390.      0.00838
-#>  4     395.      0.0101 
-#>  5     403.      0.0101 
-#>  6     411.      0.0117 
-#>  7     414.      0.0117 
-#>  8     417.      0.0134 
-#>  9     420.      0.0151 
-#> 10     424.      0.0168 
-#> # ... with 68 more rows
+#> --- END ---
 ```
 
 Please, see the *User Guide* or help pages for the names of other
-vectors of names for materials, suppliers, and regions of the spectrum.
-
+vectors of names by supplier, wavelength region and of the spectrum.
 Summary calculations can be easily done with methods from package
 ‘photobiology’. Here we calculate mean photon response for two regions
-of the spectrum given by wavelengths in nanometres.
+of the spectrum delimited by wavelengths in nanometres. Roughly 99% of
+the photons sensed by this sensor are within PAR.
 
 ``` r
-q_response(sensors.mspct[["LICOR_LI_190"]], 
-           waveband(c(500,600)))
-#> R[/q]_range.500.600 
-#>            98.91598 
+q_response(sensors.mspct[["LICOR_LI_190R"]], 
+           list(waveband(c(400, 700)), waveband(c(700, 800))),
+           quantity = "contribution")
+#>  R/Rtot[/q]_range.400.700 R/Rtot[/q]_range.700.800[ 
+#>               0.988216111               0.008700788 
 #> attr(,"time.unit")
 #> [1] "second"
 #> attr(,"radiation.unit")
-#> [1] "total photon response"
+#> [1] "contribution photon response"
 ```
 
 The `autoplot()` methods from package ‘ggspectra’ can be used for
@@ -145,6 +118,12 @@ plotting one or more spectra at a time. The classes of the objects used
 to store the spectral data are derived from `"data.frame"` making direct
 use of the data easy with functions and methods from base R and various
 packages.
+
+``` r
+autoplot(sensors.mspct[["LICOR_LI_190R"]])
+```
+
+![](man/figures/README-example-07-1.png)<!-- -->
 
 ## Installation
 
@@ -158,7 +137,7 @@ Installation of the current unstable version from Bitbucket:
 
 ``` r
 # install.packages("devtools")
-devtools::install_bitbucket("aphalo/photobiologySensors")
+remotes::install_github("aphalo/photobiologySensors")
 ```
 
 ## Documentation
@@ -188,10 +167,22 @@ Division of Plant Biology. ISBN 978-952-10-8363-1 (PDF),
 978-952-10-8362-4 (paperback). PDF file available from
 (<https://hdl.handle.net/10138/37558>).
 
+## Support
+
+Use (<https://stackoverflow.com/questions/tagged/r4photobiology>) to
+access existing questions and answers.
+
+(<https://stackoverflow.com/>) using tag \[r4photobiology\] plus any
+other relevant tag to ask new questions.
+
+## Bug reports and suggestions for enhancements
+
+(<https://github.com/aphalo/photobiologySensors/issues>)
+
 ## Contributing
 
 Pull requests, bug reports, and feature requests are welcome at
-(<https://bitbucket.org/aphalo/photobiologysensors>).
+(<https://github.com/aphalo/photobiologySensors>).
 
 ## Citation
 
@@ -200,7 +191,6 @@ publications, please cite according to:
 
 ``` r
 citation("photobiologySensors")
-#> 
 #> To cite package 'photobiologySensors' in publications, please use:
 #> 
 #>   Aphalo, Pedro J. (2015) The r4photobiology suite. UV4Plants Bulletin,
@@ -222,6 +212,6 @@ citation("photobiologySensors")
 
 ## License
 
-© 2012-2020 Pedro J. Aphalo (<pedro.aphalo@helsinki.fi>). Released under
+© 2012-2023 Pedro J. Aphalo (<pedro.aphalo@helsinki.fi>). Released under
 the GPL, version 2 or greater. This software carries no warranty of any
 kind.
