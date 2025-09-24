@@ -3,9 +3,6 @@
 \docType{data}
 \name{uv_sensors}
 \alias{uv_sensors}
-\alias{'sensors}
-\alias{by}
-\alias{waveband'}
 \alias{uvc_sensors}
 \alias{uvb_sensors}
 \alias{erythemal_sensors}
@@ -19,6 +16,7 @@
 \alias{red_sensors}
 \alias{far_red_sensors}
 \alias{blue_sensors}
+\alias{green_sensors}
 \alias{multichannel_sensors}
 \alias{electronic_components}
 \title{Sensors responsive to different wavebands}
@@ -29,9 +27,9 @@ An object of class \code{character} of length 2.
 
 An object of class \code{character} of length 6.
 
-An object of class \code{character} of length 9.
+An object of class \code{character} of length 8.
 
-An object of class \code{character} of length 6.
+An object of class \code{character} of length 7.
 
 An object of class \code{character} of length 8.
 
@@ -41,9 +39,9 @@ An object of class \code{character} of length 2.
 
 An object of class \code{character} of length 2.
 
-An object of class \code{character} of length 2.
+An object of class \code{character} of length 3.
 
-An object of class \code{character} of length 2.
+An object of class \code{character} of length 3.
 
 An object of class \code{character} of length 2.
 
@@ -51,9 +49,11 @@ An object of class \code{character} of length 2.
 
 An object of class \code{character} of length 1.
 
-An object of class \code{character} of length 6.
+An object of class \code{character} of length 1.
 
-An object of class \code{character} of length 5.
+An object of class \code{character} of length 10.
+
+An object of class \code{character} of length 9.
 }
 \usage{
 uv_sensors
@@ -84,13 +84,16 @@ far_red_sensors
 
 blue_sensors
 
+green_sensors
+
 multichannel_sensors
 
 electronic_components
 }
 \description{
-Names of datasets containing the wavelengths and tabulated values spectral responsivity
-for broadband sensors from various suppliers.
+Vectors of names of members of the collection of spectra
+\code{\link{sensors.mspct}} by the wavelengths or colours they are sensitive
+to.
 }
 \examples{
 uv_sensors # ultraviolet
@@ -114,4 +117,5 @@ sensors.mspct[par_sensors]
 \seealso{
 \code{\link{sensors.mspct}}
 }
+\concept{sensors by waveband or color}
 \keyword{datasets}
