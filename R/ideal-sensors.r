@@ -1,16 +1,22 @@
 #' @title Idealized sensors
 #'
-#' @description A vector of names useful for extracting subsets of spectra from
-#'   the \code{\link{sensors.mspct}} object.
-#'
-#' @format A character vector of names of members of the collection of spectra.
+#' @inherit ams_sensors description seealso
 #'
 #' @docType data
 #' @keywords datasets
 #'
-#' @note
+#' @concept light sensors
+#'
+#' @details
 #' Flat spectral response to spectral energy irradiance and to spectral photon
 #' irradiance.
+#'
+#' @note Exact values based on physical principles.
+#'
+#' @references
+#' KJ McCree. The action spectrum, absorbance and quantum yield of
+#'   photosynthesis in crop plants. Agricultural Meteorology. 1971/72
+#'   Vol 9, pp 191-216
 #'
 #' @examples
 #' ideal_sensors

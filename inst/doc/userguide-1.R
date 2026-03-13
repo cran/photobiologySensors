@@ -9,7 +9,19 @@ eval_ggspectra <- TRUE
 library(ggspectra)
 
 ## -----------------------------------------------------------------------------
+camera.spct <- image_sensors.mspct[[1]]
+str(attr(camera.spct, "sensor.properties"))
+
+## -----------------------------------------------------------------------------
+what_measured(camera.spct)
+how_measured(camera.spct)
+cat(comment(camera.spct))
+
+## -----------------------------------------------------------------------------
 names(sensors.mspct)
+
+## -----------------------------------------------------------------------------
+names(image_sensors.mspct)
 
 ## -----------------------------------------------------------------------------
 sensors.mspct$LICOR_LI_190R
@@ -60,12 +72,17 @@ ggplot(sensors.mspct$LICOR_LI_190R, unit.out = "photon") +
   theme_classic()
 
 ## ----eval=eval_ggspectra------------------------------------------------------
-ggplot(diffusers.lst$bentham.D7, aes(angle.deg, response)) +
+ggplot(diffusers.lst$bentham_D7, aes(angle.deg, response)) +
   geom_line() +
   geom_line(aes(y = cos(angle.deg * pi / 180)), linetype = "dotted", color = "red") +
   scale_x_continuous(name = "Angle (degrees)", breaks = c(-90, -60, -30, 0, 30, 60, 90)) +
   scale_y_continuous(name = "Response (/1)") +
   theme_classic()
+
+## -----------------------------------------------------------------------------
+angular_response(45, "cosine")
+angular_response(45, "dome")
+angular_response(45, "sphere")
 
 ## -----------------------------------------------------------------------------
 head(as.data.frame(sensors.mspct$LICOR_LI_190R))

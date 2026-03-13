@@ -36,23 +36,45 @@ library(ggspectra)
 In this brief User Guide we describe how to re-scale the normalized
 spectra, and how to access individual spectra or subsets of spectra.
 
-Spectra in the package are contained in one collection: `sensors.mspct` contains
-spectral data for various types of broadband sensors. 
+## Data and metadata
+
+Spectra are contained in two collection: `sensors.mspct` contains
+spectral data for various types of broadband sensors and `image_sensors.mspct`
+contains spectral data for digital cameras and image sensors. 
+
 <!-- In addition it contains contains data on the effect of temperature on the -->
 <!-- sensitivity of an ultraviolet sensor. -->
+
+Each spectrum object contains in addition to the spectral data, metadata stored
+as object attributes.
+
+```{r}
+camera.spct <- image_sensors.mspct[[1]]
+str(attr(camera.spct, "sensor.properties"))
+```
+
+```{r}
+what_measured(camera.spct)
+how_measured(camera.spct)
+cat(comment(camera.spct))
+```
 
 In addition to the objects containing the data itself, several character vectors 
 of names of spectra are provide to facilitate the retrieval of subsets of spectra.
 
 ## Accessing individual spectra
 
-The `response_spct` member objects in `sensors.mspct` can be accessed through their
+The `response_spct` member objects in collections `sensors.mspct` and `image_sensors.mspct` can be accessed through their
 names or through a numeric index. As the numeric indexes are likely to change 
 with updates to the package, their use is discouraged. Names as character
 strings should be used instead. They can also be retrieved with method `names()`.
 
 ```{r}
 names(sensors.mspct)
+```
+
+```{r}
+names(image_sensors.mspct)
 ```
 
 We can use a character string as index to extract an individual `response_spct`
@@ -168,7 +190,7 @@ ggplot(sensors.mspct$LICOR_LI_190R, unit.out = "photon") +
 ## Angular response
 
 ```{r, eval=eval_ggspectra}
-ggplot(diffusers.lst$bentham.D7, aes(angle.deg, response)) +
+ggplot(diffusers.lst$bentham_D7, aes(angle.deg, response)) +
   geom_line() +
   geom_line(aes(y = cos(angle.deg * pi / 180)), linetype = "dotted", color = "red") +
   scale_x_continuous(name = "Angle (degrees)", breaks = c(-90, -60, -30, 0, 30, 60, 90)) +
@@ -176,6 +198,11 @@ ggplot(diffusers.lst$bentham.D7, aes(angle.deg, response)) +
   theme_classic()
 ```
 
+```{r}
+angular_response(45, "cosine")
+angular_response(45, "dome")
+angular_response(45, "sphere")
+```
 
 ## Using the data in other contexts
 

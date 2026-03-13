@@ -5,21 +5,33 @@
 \alias{ideal_sensors}
 \title{Idealized sensors}
 \format{
-A character vector of names of members of the collection of spectra.
+An object of class \code{character} of length 2.
 }
 \usage{
 ideal_sensors
 }
 \description{
-A vector of names useful for extracting subsets of spectra from
-  the \code{\link{sensors.mspct}} object.
+A vector of indexes for extracting subsets of spectra from the
+\code{\link{sensors.mspct}} object.
 }
-\note{
+\details{
 Flat spectral response to spectral energy irradiance and to spectral photon
 irradiance.
+}
+\note{
+Exact values based on physical principles.
 }
 \examples{
 ideal_sensors
 
 }
+\references{
+KJ McCree. The action spectrum, absorbance and quantum yield of
+  photosynthesis in crop plants. Agricultural Meteorology. 1971/72
+  Vol 9, pp 191-216
+}
+\seealso{
+\code{\link{sensors.mspct}}
+}
+\concept{light sensors}
 \keyword{datasets}

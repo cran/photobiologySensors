@@ -15,11 +15,11 @@ badge](https://aphalo.r-universe.dev/badges/photobiologySensors)](https://aphalo
 <!-- badges: end -->
 
 Package **photobiologySensors** is a collection of spectral
-responsiveness data for different broadband sensors and of angular
-response data for some of the same sensors and for cosine diffusers and
-other entrance optics used with spectrometers. It complements other
-packages in the suite of R packages for photobiology ‘r4photobiology’.
-This package contains only data.
+responsiveness data for different broadband amd image sensors and of
+angular response data for some of the same sensors and for cosine
+diffusers and other entrance optics used with spectrometers. It
+complements other packages in the suite of R packages for photobiology
+‘r4photobiology’. This package contains only data.
 
 ## Examples
 
@@ -34,19 +34,21 @@ How many spectra are included in the current version of
 
 ``` r
 length(sensors.mspct)
-#> [1] 56
+#> [1] 69
+length(image_sensors.mspct)
+#> [1] 5
 ```
 
-What are the names of available spectra? We use `head()` to limit the
-output.
+What are the names of available spectra? (We use `head()` to limit the
+output.)
 
 ``` r
 # list names of the first 10 sensors
 head(names(sensors.mspct), 10)
-#>  [1] "ams_AS7263"          "ams_AS7331"          "ams_AS7341"         
-#>  [4] "ams_AS7343"          "ams_TSL2591"         "Vishay_VEML6075"    
-#>  [7] "ams_TSL254R"         "ams_TSL257"          "Analytik_Jena_UVX25"
-#> [10] "Analytik_Jena_UVX31"
+#>  [1] "ams_AS7263"         "ams_AS7331"         "ams_AS7341"        
+#>  [4] "ams_AS7343"         "ams_TSL254R"        "ams_TSL257"        
+#>  [7] "ams_TSL2591"        "AnalytikJena_UVX25" "AnalytikJena_UVX31"
+#> [10] "AnalytikJena_UVX36"
 ```
 
 To subset based on different criteria we can use predefined character
@@ -66,27 +68,29 @@ as show below, extract data for PAR sensors from Kipp.
 sensors.mspct[intersect(kipp_sensors, par_sensors)]
 #> Object: response_mspct [1 x 1]
 #> --- Member: KIPP_PQS1 ---
-#> Object: response_spct [202 x 2]
+#> Object: response_spct [280 x 2]
 #> Wavelength range 391.431-717.608 nm, step 0.5010399-4.00832 nm 
 #> Label: KIPP PQS1 light sensor 
+#> Sensor: PQS1 from KIPP.
+#> Spct: data in s.e.response normalized to 1 at 673.5 nm (max in 391-718 nm)
 #> Variables:
 #>  w.length: Wavelength [nm]
-#>  s.e.response: Spectral energy response [W-1 m2 nm] 
+#>  s.e.response: Spectral energy response [normalized] 
 #> --
-#> # A tibble: 202 × 2
+#> # A tibble: 280 × 2
 #>    w.length s.e.response
 #>       <dbl>        <dbl>
 #>  1     391.       0.0245
 #>  2     392.       0.0327
 #>  3     392.       0.0410
-#>  4     393.       0.0561
-#>  5     394.       0.0650
-#>  6     394.       0.0753
-#>  7     395.       0.0960
-#>  8     396.       0.119 
-#>  9     397.       0.134 
-#> 10     397.       0.153 
-#> # ℹ 192 more rows
+#>  4     393.       0.0487
+#>  5     393.       0.0561
+#>  6     394.       0.0650
+#>  7     394.       0.0753
+#>  8     395.       0.0960
+#>  9     396.       0.119 
+#> 10     397.       0.134 
+#> # ℹ 270 more rows
 #> 
 #> --- END ---
 ```
@@ -102,8 +106,11 @@ the photons sensed by this sensor are within PAR.
 q_response(sensors.mspct[["LICOR_LI_190R"]], 
            list(waveband(c(400, 700)), waveband(c(700, 800))),
            quantity = "contribution")
+#> Warning in resp_spct(spct, w.band = NULL, unit.out = unit.out, quantity =
+#> "total", : The spectral data have been normalized, preventing calculation of
+#> irradiance. See 'setNormalised()' and 'normalise()'.
 #>  R/Rtot[/q]_range.400.700 R/Rtot[/q]_range.700.800[ 
-#>                0.98821737                0.00870119 
+#>                        NA                        NA 
 #> attr(,"time.unit")
 #> [1] "second"
 #> attr(,"radiation.unit")
@@ -122,15 +129,24 @@ autoplot(sensors.mspct[["LICOR_LI_190R"]])
 
 ![](man/figures/README-example-07-1.png)<!-- -->
 
-## Code breaking renaming of data objects in 2020
+In addition to spectral response data, the package includes angular
+response data for some of the same sensors and for entrance optics used
+with spectrometers.
 
-In the update to version 0.5.0 in October 2020 several members of the
-collection of sensor-response spectra were renamed to ensure consistency
-and clarity. As of version 0.5.0 all member names start with the name of
-the manufacturer or supplier. In addition, several of the vectors of
-names of member spectra were renamed to include the word “sensors” to
-avoid possible name clashes with other packages and also to improve
-naming consistency.
+``` r
+names(diffusers.lst)
+#>  [1] "ams_TSL254R"          "ams_TSL257"           "analytik_jena_cosine"
+#>  [4] "bentham_D7"           "bentham_D7_dome"      "ideal_cosine"        
+#>  [7] "ideal_dome"           "ideal_sphere"         "licor_R"             
+#> [10] "ocean_optics_4mm"     "schreder_J1002"       "Scintec"             
+#> [13] "sglux_TOCON"          "sglux_uv_cosine"      "sglux_uvi_cosine"    
+#> [16] "Solarlight_501"       "vishay_VEML6075"      "vital_BW20"
+```
+
+``` r
+dome_diffusers
+#> [1] "bentham_D7_dome" "ideal_dome"
+```
 
 ## Installation
 
@@ -231,6 +247,6 @@ citation("photobiologySensors")
 
 ## License
 
-© 2012-2025 Pedro J. Aphalo (<pedro.aphalo@helsinki.fi>). Released under
+© 2012-2026 Pedro J. Aphalo (<pedro.aphalo@helsinki.fi>). Released under
 the GPL, version 2 or greater. This software carries no warranty of any
 kind.
